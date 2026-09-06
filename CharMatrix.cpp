@@ -1,8 +1,9 @@
 #include "CharMatrix.h"
+#include <string.h>
 
-///////////////////
-////Constructor////
-///////////////////
+////////////////////
+////Constructors////
+////////////////////
 CharMatrix::CharMatrix(const size_t& elementsPerRow, const size_t& numberOfRows, const char& fillingSymbol):
 	total_size{ elementsPerRow * numberOfRows }, single_vector_size{ elementsPerRow }{
 	information = new char[total_size + 1];
@@ -10,6 +11,16 @@ CharMatrix::CharMatrix(const size_t& elementsPerRow, const size_t& numberOfRows,
 	for (size_t i = 0; i < total_size; i++)
 	{
 		information[i] = fillingSymbol;
+	}
+}
+
+CharMatrix::CharMatrix(const char *str) :
+	total_size{ strlen(str) }, single_vector_size{ strlen(str) } {
+	information = new char[total_size + 1];
+	information[total_size] = '\0';
+	for (size_t i = 0; i < total_size; i++)
+	{
+		information[i] = str[i];
 	}
 }
 
@@ -90,8 +101,11 @@ const int CharMatrix::numberOfElements() const {
 }
 
 const char CharMatrix::get(const int& row, const int& column) const {
-	if (row < numberOfRows() && column < numberOfColumns())
-		return information[column + (row * single_vector_size)];
+	int c = (column < numberOfColumns()) ? column : numberOfColumns() - 1;
+	int r = (row < numberOfRows()) ? row : numberOfRows() - 1;
+	c = (column > 0) ? column : 0;
+	r = (row > 0) ? row : 0;
+	return information[c + (r * single_vector_size)];
 }
 
 ///////////////

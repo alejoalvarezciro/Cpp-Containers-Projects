@@ -9,8 +9,9 @@ private:
 
 public:
 
-	//Constructor
+	//Constructors
 	CharMatrix(const size_t& elementsPerRow, const size_t& numberOfRows, const char& fillingSymbol);
+	CharMatrix(const char* str);
 
 	//Rule of 5
 	~CharMatrix();
