@@ -28,5 +28,8 @@ public:
 
 	//Setters
 	void set(const int& row, const int& column, const char& newValue);
+
+	//Prints
+	void quickPrint() const;
 };
 

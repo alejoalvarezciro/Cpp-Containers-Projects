@@ -1,5 +1,6 @@
 #include "CharMatrix.h"
 #include <string.h>
+#include <cstdio>
 
 ////////////////////
 ////Constructors////
@@ -103,8 +104,8 @@ const int CharMatrix::numberOfElements() const {
 const char CharMatrix::get(const int& row, const int& column) const {
 	int c = (column < numberOfColumns()) ? column : numberOfColumns() - 1;
 	int r = (row < numberOfRows()) ? row : numberOfRows() - 1;
-	c = (column > 0) ? column : 0;
-	r = (row > 0) ? row : 0;
+	c = (c > 0) ? c : 0;
+	r = (r > 0) ? r : 0;
 	return information[c + (r * single_vector_size)];
 }
 
@@ -114,4 +115,11 @@ const char CharMatrix::get(const int& row, const int& column) const {
 void CharMatrix::set(const int& row, const int& column, const char& newValue) {
 	if (row < numberOfRows() && column < numberOfColumns())
 		information[column + (row * single_vector_size)] = newValue;
+}
+
+//////////////
+////Prints////
+//////////////
+void CharMatrix::quickPrint() const {
+	printf("%s", information);
 }
