@@ -1,0 +1,5 @@
+MatrixProject/
+x64/
+*.snlx
+*.vcxproj
+MatrixProject.cpp
