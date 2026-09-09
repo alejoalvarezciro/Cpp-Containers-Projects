@@ -1,5 +1,5 @@
-MatrixProject/
-x64/
-*.snlx
+*.slnx
 *.vcxproj
+*.vcxproj.user
+*.vcxproj.filters
 MatrixProject.cpp
