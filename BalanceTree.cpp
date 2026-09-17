@@ -3,7 +3,8 @@
 /////////////////////////
 ////Private Functions////
 /////////////////////////
-void BalanceTree::clearAll(const Node* pNode) {
+template <typename T>
+void BalanceTree<T>::clearAll(const Node* pNode) {
 	if (pNode != nullptr)
 	{
 		clearAll(pNode->left);
@@ -12,7 +13,8 @@ void BalanceTree::clearAll(const Node* pNode) {
 	}
 }
 
-void BalanceTree::copyFathersAndSons(const Node* pNodeCopy, const Node* pNodeOriginal) {
+template <typename T>
+void BalanceTree<T>::copyFathersAndSons(const Node* pNodeCopy, const Node* pNodeOriginal) {
 	if (pNodeOriginal != nullptr)
 	{
 		
@@ -22,21 +24,25 @@ void BalanceTree::copyFathersAndSons(const Node* pNodeCopy, const Node* pNodeOri
 ////////////////////
 ////Constructors////
 ////////////////////
-BalanceTree::BalanceTree() :
+template <typename T>
+BalanceTree<T>::BalanceTree() :
 	root(nullptr), size(0) {
 }
 
 /////////////////
 ////Rule of 5////
 /////////////////
-BalanceTree::~BalanceTree() {
+template <typename T>
+BalanceTree<T>::~BalanceTree() {
 	clearAll(root);
 }
-BalanceTree::BalanceTree(const BalanceTree& other) :
+template <typename T>
+BalanceTree<T>::BalanceTree(const BalanceTree& other) :
 	root(nullptr), size(0) {
 	
 }
-BalanceTree& BalanceTree::operator=(const BalanceTree& other) {
+template <typename T>
+BalanceTree<T>& BalanceTree<T>::operator=(const BalanceTree<T>& other) {
 	if (&other == this)
 	{
 		return *this;
@@ -44,12 +50,14 @@ BalanceTree& BalanceTree::operator=(const BalanceTree& other) {
 	clearAll(root);
 	return *this;
 }
-BalanceTree::BalanceTree(BalanceTree&& other) noexcept :
+template <typename T>
+BalanceTree<T>::BalanceTree(BalanceTree<T>&& other) noexcept :
 	root(other.root), size(other.size) {
 	other.root = nullptr;
 	other.size = 0;
 }
-BalanceTree& BalanceTree::operator=(BalanceTree&& other) noexcept {
+template <typename T>
+BalanceTree<T>& BalanceTree<T>::operator=(BalanceTree<T>&& other) noexcept {
 	if (&other == this)
 	{
 		return *this;
