@@ -69,3 +69,31 @@ BalanceTree<T>& BalanceTree<T>::operator=(BalanceTree<T>&& other) noexcept {
 	other.size = 0;
 	return *this;
 }
+
+///////////////
+////Setters////
+///////////////
+template <typename T>
+void BalanceTree<T>::addNode(const T& pInf, const int& pID) {
+	Node* newNode = new Node(pInf, pID);
+	if (root == nullptr)
+	{
+		root = newNode;
+		size++;
+	}
+	else {
+		bool con = true;
+		while (con) {
+			Node* current = root;
+			if (pID > current->id) {
+
+				if (current->right == nullptr) { current->right = newNode; }
+				else { current = current->right; }
+			}
+			else {
+
+			}
+		}
+		size++;
+	}
+}

@@ -9,8 +9,9 @@ private:
 		int id;
 		Node* left;
 		Node* right;
-		Node(const int& pID, Node* pLeft = nullptr, Node* pRight = nullptr) :
-			id(pID), weight(0), left(pLeft), right(pRight) {
+		T information;
+		Node(const T& pInf, const int& pID, Node* pLeft = nullptr, Node* pRight = nullptr) :
+			information(pInf), id(pID), weight(0), left(pLeft), right(pRight) {
 		}
 
 		void updateWeight() {
@@ -37,5 +38,7 @@ public:
 	BalanceTree(BalanceTree&& other) noexcept;
 	BalanceTree& operator=(BalanceTree&& other) noexcept;
 
+	//Setters
+	void addNode(const T& pInf, const int& pID);
 };
 
